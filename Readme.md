@@ -31,7 +31,7 @@ L'interface web permet à l'utilisateur de :
 
 1. Clonez ce projet sur votre machine :
    ```bash
-   git clone https://github.com/votre-utilisateur/calculateur-taux-change.git
+   git clone https://github.com/flonkita/awam.git
    ```
 
 ---

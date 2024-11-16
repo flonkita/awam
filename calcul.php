@@ -30,14 +30,30 @@ $historique[] = [
 ];
 file_put_contents('historique.json', json_encode($historique));
 
-// envoyer un email
-if (isset($_GET['sendEmail'])) {
-    $to = "client@example.com";
-    $subject = "Historique des calculs";
-    $message = print_r($historique, true);
-    mail($to, $subject, $message);
-    echo "Email envoyé avec succès !";
+
+// Fonction d'envoi d'email avec l'historique
+function envoyerHistoriqueParEmail($historique)
+{
+    // Formater l'historique en texte
+    $emailContent = "Historique des calculs de taux de change :\n\n";
+    foreach ($historique as $calcul) {
+        $emailContent .= "Date: " . $calcul['date'] . "\n";
+        $emailContent .= "Montant 1: " . $calcul['valeur1'] . " " . $calcul['devise1'] . "\n";
+        $emailContent .= "Montant 2: " . $calcul['valeur2'] . " " . $calcul['devise2'] . "\n";
+        $emailContent .= "Résultat: " . $calcul['resultat'] . " " . $calcul['deviseResultat'] . "\n\n";
+    }
+
+    // Destinataire de l'email
+    $to = "client@example.com";  // Remplacez par l'adresse e-mail du client
+    $subject = "Historique des calculs de taux de change";
+    $headers = "From: webmaster@example.com\r\n";  // Remplacez par votre adresse e-mail
+
+    // Envoi de l'e-mail
+    mail($to, $subject, $emailContent, $headers);
 }
+
+// Envoyer l'historique par email
+envoyerHistoriqueParEmail($historique);
 
 // Redirection vers index.php avec les résultats dans l'URL
 header("Location: index.php?resultat=" . urlencode($resultat) . "&deviseResultat=" . urlencode($deviseFinale));
