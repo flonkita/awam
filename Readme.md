@@ -50,6 +50,7 @@ Cliquez sur "Calculer" pour obtenir le résultat.
 Le résultat est affiché sur la page, accompagné de la devise.
 
 ### Évolutions possibles
+
 **Court terme** :
 - *Ajout de nouvelles devises* :
 
@@ -69,9 +70,24 @@ Connecter l'application à une API de taux de change en temps réel, comme Open 
 
 Utiliser un framework comme Bootstrap ou TailwindCSS.
 
+- *Architecture MVC* : 
+
+Séparer les couches (modèle, vue, contrôleur) pour une meilleure lisibilité.
+
+- *Base de données* : 
+
+Utiliser MySQL ou SQLite pour stocker les taux de change et l’historique.
+
 - *Envoi automatique d'e-mails* :
 
 Implémenter une tâche cron pour envoyer l'historique des calculs du jour par e-mail.
+
+---
+### Problèmes Rencontrés
+
+**Arrondi**: 
+
+Durant cet exo, pendant la conversion de dollars/euros ( 100 USD + 5 EUR ), j'avais d'abord 95,909 EUR où j'ai utilisé la fonction round (qui arrondit) mais à 96 donc pour contrer ça j'ai utilisé la fonction floor pour arrondir le résultat à l'entier inférieur soit 95 EUR
 
 **Email**
 
@@ -86,6 +102,3 @@ if (isset($_GET['sendEmail'])) {
     echo "Email envoyé avec succès !";
 }
 ```
----
-### Problèmes Rencontrés
-Durant cet exo, pendant la conversion de dollars/euros ( 100 USD + 5 EUR ), j'avais d'abord 95,909 EUR où j'ai utilisé la fonction round (qui arrondit) mais à 96 donc pour contrer ça j'ai utilisé la fonction floor pour arrondir le résultat à l'entier inférieur soit 95 EUR
